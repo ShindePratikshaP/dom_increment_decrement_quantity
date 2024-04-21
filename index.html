@@ -72,15 +72,50 @@
         <h1 class="heading">Apple Macbook</h1>
         <p class="description">Apple Macbook Air M3-(8 GB/512 GB SSD/Mac OS)</p>
         <p class="price">₹ 90,000/-</p>
-        <p>1 x 90,000</p>
-        <p>Total Price : 90,000</p>
+        <p id="total-cal">1 x 90,000</p>
+        <p id="total">Total Price : 90,000</p>
         <div class="quantity">
-            <img src="./imgs/minus.png" alt="minus" class="img">
-            <span class="number">1</span>
-            <img src="./imgs/plus.png" alt="plus" class="img">
+            <img src="./imgs/minus.png" alt="minus" class="img" onclick="dec()">
+            <span class="number" id="number">1</span>
+            <img src="./imgs/plus.png" alt="plus" class="img" onclick="inc()">
         </div>
-        <button type="button" class="btn">Order Now</button>
+        <button type="button" class="btn">Buy Now</button>
     </div>
+
+    <script>
+        function inc() {
+            const quantityText = document.getElementById('number');
+            const quantityCal = document.getElementById('total-cal');
+            const quantityTotal = document.getElementById('total');
+            let quantity = parseInt(quantityText.innerText);
+            if(quantity<10)
+            {
+            quantityText.innerText = ++quantity;
+            }
+            else{
+                alert("You can't add more than 10 items");
+            }
+
+            quantityCal.innerText = `${quantity} x 90,000`;
+            quantityTotal.innerText = `Total Price : ${quantity*90000}`;           
+        }
+        function dec(){
+            const quantityText = document.getElementById('number');
+            const quantityCal = document.getElementById('total-cal');
+            const quantityTotal = document.getElementById('total');
+            let quantity = parseInt(quantityText.innerText);
+            if(quantity>1)
+            {
+            quantityText.innerText = --quantity;
+            }
+            else{
+                alert("You can't add less than 1 item");
+            }
+
+            quantityCal.innerText = `${quantity} x 90,000`;
+            quantityTotal.innerText = `Total Price : ${quantity*90000}`;           
+        }
+    </script>
     
 </body>
 </html>
